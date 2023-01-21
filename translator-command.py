@@ -11,14 +11,20 @@ def on_release(key):
         if key == keyboard.Key.f3:
             Translator.clean_up()
         if key == keyboard.Key.f4:
-            os.system('python transitive.py -fs=True')
+            path_exists = os.path.exists("lib/config/config.json")
+            if path_exists:
+                os.remove("lib/config/config.json")
+                
+            print(colored('''[INFO] Config is deleted, restart app for configure''', "green"))
+            os._exit(0)
+            # os.system('python transitive.py -fs=True')
     except NameError:
         pass
 
 def main():
-    global lunar
-    lunar = Translator(collect_data = "collect_data" in sys.argv)
-    lunar.start()
+    global translator
+    translator = Translator(collect_data = "collect_data" in sys.argv)
+    translator.start()
 
 if __name__ == "__main__":
     os.system('cls' if os.name == 'nt' else 'clear')
