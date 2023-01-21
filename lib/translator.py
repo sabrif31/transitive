@@ -12,7 +12,7 @@ from deep_translator import (GoogleTranslator, DeeplTranslator)
 from rich.tree import Tree
 from rich import print
 
-class SlowMouse:
+class Translator:
     pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
     """
     get1 = input(colored('''\nPlace cursor at the top left of the region you want to capture, and then press enter \n''', "blue"))
@@ -39,13 +39,13 @@ class SlowMouse:
         # region=(SlowMouse.pos1[0], SlowMouse.pos1[1], SlowMouse.width, SlowMouse.height)
         # image = pyautogui.screenshot(region=(SlowMouse.pos1[0], SlowMouse.pos1[1], SlowMouse.width, SlowMouse.height))
         # os.system('cls')
-        x = SlowMouse.position_settings["x"]
-        y = SlowMouse.position_settings["y"]
-        width = SlowMouse.position_settings["width"]
-        height = SlowMouse.position_settings["height"]
-        image = pyautogui.screenshot(region=(SlowMouse.position_settings["x"], SlowMouse.position_settings["y"], SlowMouse.position_settings["width"], SlowMouse.position_settings["height"]))
-        image.save(SlowMouse.path)
-        img2 = cv2.imread(SlowMouse.path)
+        x = Translator.position_settings["x"]
+        y = Translator.position_settings["y"]
+        width = Translator.position_settings["width"]
+        height = Translator.position_settings["height"]
+        image = pyautogui.screenshot(region=(Translator.position_settings["x"], Translator.position_settings["y"], Translator.position_settings["width"], Translator.position_settings["height"]))
+        image.save(Translator.path)
+        img2 = cv2.imread(Translator.path)
         img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
         txt = pytesseract.image_to_string(img2)
         # translated = GoogleTranslator(source='en', target='fr').translate(text=txt)

@@ -7,9 +7,9 @@ from termcolor import colored
 def on_release(key):
     try:
         if key == keyboard.Key.f2:
-            SlowMouse.on_take_screenshot(apiKey="18704e15-6cce-db4f-5b88-6928c8529b1f:fx")
+            Translator.on_take_screenshot(apiKey="18704e15-6cce-db4f-5b88-6928c8529b1f:fx")
         if key == keyboard.Key.f3:
-            SlowMouse.clean_up()
+            Translator.clean_up()
         if key == keyboard.Key.f4:
             os.system('python transitive.py -fs=True')
     except NameError:
@@ -17,7 +17,7 @@ def on_release(key):
 
 def main():
     global lunar
-    lunar = SlowMouse(collect_data = "collect_data" in sys.argv)
+    lunar = Translator(collect_data = "collect_data" in sys.argv)
     lunar.start()
 
 if __name__ == "__main__":
@@ -42,7 +42,7 @@ if __name__ == "__main__":
         print(colored('''[WARNING] Launch python setup.py for set the settings position of the text at translate''', "red"))
         os._exit(0)
     
-    from lib.slowmouse import SlowMouse
+    from lib.translator import Translator
     listener = keyboard.Listener(on_release=on_release)
     listener.start()
     main()

@@ -55,7 +55,7 @@ class Transitive(QtWidgets.QWidget):
             json.dump(position_settings, outfile)
 
         print(colored('''[SAVED] Coordinate is saved''', "green"))
-        os.system('python lunar.py')
+        os.system('python translator-command.py')
 
     def getWindow(self):
         return self._screen.grabWindow(0)
@@ -214,7 +214,7 @@ def take_textshot(langs, interval, force=False):
     ensure_tesseract_installed()
     path_exists = os.path.exists("lib/config/config.json")
     if path_exists: #  and force == False
-        os.system('python lunar.py')
+        os.system('python translator-command.py')
     else:
         QtCore.QCoreApplication.setAttribute(Qt.AA_DisableHighDpiScaling)
         app = QtWidgets.QApplication(sys.argv)
